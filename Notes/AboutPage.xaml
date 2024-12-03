@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Notes.AboutPage">
-    <VerticalStackLayout Spacing="10" Margin="10">
-        <HorizontalStackLayout Spacing="10">
-            <Image Source="dotnet_bot.png"
-                   SemanticProperties.Description="The dot net bot waving hello!"
-                   HeightRequest="64" />
-            <Label FontSize="22" FontAttributes="Bold" Text="Notes" VerticalOptions="End" />
-            <Label FontSize="22" Text="v1.0" VerticalOptions="End" />
-        </HorizontalStackLayout>
+			xmlns:ext="clr-namespace:Notes.Models"
+             x:Class="Notes.AboutPage"
+			 Title="Статистика">
+	<VerticalStackLayout Spacing="10" Margin="10">
 
-        <Label Text="This app is written in XAML and C# with .NET MAUI." />
-        <Button Text="Learn more..." Clicked="LearnMore_Clicked" />
-    </VerticalStackLayout>
+		<CollectionView x:Name="MatchesView" HeightRequest="450">
+			<CollectionView.Header>
+				<HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+					<Label Text="История матчей " FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+					<Label x:Name="command" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+				</HorizontalStackLayout>
+			</CollectionView.Header>
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Grid x:DataType = "ext:CommandMatch" HeightRequest="50">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="0.4*" />
+							<ColumnDefinition Width="0.2*" />
+							<ColumnDefinition Width="0.4*" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="50"/>
+						</Grid.RowDefinitions>
+						<Frame BorderColor="MediumPurple" CornerRadius="0" Padding="0">
+							<Label Text="{Binding LeftName}" VerticalOptions="Center" HorizontalOptions="Center"/>
+						</Frame>
+						<Frame Grid.Column="1" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
+							<HorizontalStackLayout  Grid.Column="1" Padding="0" HorizontalOptions="CenterAndExpand">
+								<Label Text="{Binding LeftPoints}" VerticalOptions="Center" HorizontalOptions="Center"/>
+								<Label Text=":" VerticalOptions="Center" HorizontalOptions="Center"/>
+								<Label Text="{Binding RightPoints}" VerticalOptions="Center" HorizontalOptions="Center"/>
+							</HorizontalStackLayout>
+						</Frame>
+						<Frame  Grid.Column="2" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
+							<Label Text="{Binding RightName}" VerticalOptions="Center" HorizontalOptions="Center"/>
+						</Frame>
+					</Grid>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+	</VerticalStackLayout>
 </ContentPage>

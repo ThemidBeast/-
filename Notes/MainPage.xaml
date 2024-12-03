@@ -6,22 +6,50 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+            Padding="10,0"
+            Spacing="0">
             <Image
                 Source="basket.jpg"
                 HeightRequest="300"
-                Aspect="Fill"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+                Aspect="Fill"/>
 
             <Label
-                Text="NBA Ratings"
+                Text="Турнирная сетка NBA"
                 Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-            <CollectionView ItemsSource="{Binding Teams}" HeightRequest="450">
-                <CollectionView.ItemTemplate>
+                Margin="0, 15"/>
+			<Grid x:DataType = "ext:Team" HeightRequest="50">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.15*" />
+					<ColumnDefinition Width="0.5*" />
+					<ColumnDefinition Width="0.1*" />
+					<ColumnDefinition Width="0.1*" />
+					<ColumnDefinition Width="0.1*" />
+					<ColumnDefinition Width="0.1*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="50"/>
+				</Grid.RowDefinitions>
+				<Label/>
+				<Frame  Grid.Column="1" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
+					<Label Text="Команда" VerticalOptions="Center" HorizontalOptions="Center"/>
+				</Frame>
+				<Frame  Grid.Column="2" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
+					<Label Text="И" VerticalOptions="Center" HorizontalOptions="Center"/>
+				</Frame>
+				<Frame  Grid.Column="3" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
+					<Label Text="В" VerticalOptions="Center" HorizontalOptions="Center"/>
+				</Frame>
+				<Frame  Grid.Column="4" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
+					<Label Text="П" VerticalOptions="Center" HorizontalOptions="Center"/>
+				</Frame>
+				<Frame  Grid.Column="5" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
+					<Label Text="О" VerticalOptions="Center" HorizontalOptions="Center"/>
+				</Frame>
+			</Grid>
+			<CollectionView ItemsSource="{Binding Teams}" HeightRequest="450">
+				<CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid x:DataType = "ext:Team">
+                        <Grid x:DataType = "ext:Team" HeightRequest="50">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.15*" />
                                 <ColumnDefinition Width="0.5*" />
@@ -35,23 +63,58 @@
                             </Grid.RowDefinitions>
                             <Frame BorderColor="MediumPurple" CornerRadius="0" Padding="0">
                                 <Image Source="{Binding Image}" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            </Frame>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer 
+                                    Tapped="TapGestureRecognizer_Tapped_1">
+									</TapGestureRecognizer>
+								</Frame.GestureRecognizers>
+							</Frame>
                             <Frame  Grid.Column="1" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
                                 <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            </Frame>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer 
+                                    Tapped="TapGestureRecognizer_Tapped_1">
+									</TapGestureRecognizer>
+								</Frame.GestureRecognizers>
+							</Frame>
                             <Frame  Grid.Column="2" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
                                 <Label Text="{Binding Games}" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            </Frame>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer 
+                                    Tapped="TapGestureRecognizer_Tapped_1">
+									</TapGestureRecognizer>
+								</Frame.GestureRecognizers>
+							</Frame>
                             <Frame  Grid.Column="3" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
                                 <Label Text="{Binding Win}" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            </Frame>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer 
+                                    Tapped="TapGestureRecognizer_Tapped_1">
+									</TapGestureRecognizer>
+								</Frame.GestureRecognizers>
+							</Frame>
                             <Frame  Grid.Column="4" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
                                 <Label Text="{Binding Loss}" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            </Frame>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer 
+                                    Tapped="TapGestureRecognizer_Tapped_1">
+									</TapGestureRecognizer>
+								</Frame.GestureRecognizers>
+							</Frame>
                             <Frame  Grid.Column="5" BorderColor="MediumPurple" CornerRadius="0" Padding="0">
                                 <Label Text="{Binding Points}" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            </Frame>
-                        </Grid>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer 
+                                    Tapped="TapGestureRecognizer_Tapped_1">
+									</TapGestureRecognizer>
+								</Frame.GestureRecognizers>
+							</Frame>
+							<Grid.GestureRecognizers>
+								<TapGestureRecognizer 
+                                    Tapped="TapGestureRecognizer_Tapped_1">
+								</TapGestureRecognizer>
+							</Grid.GestureRecognizers>
+						</Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
