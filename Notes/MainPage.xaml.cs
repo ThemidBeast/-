@@ -1,24 +1,28 @@
-﻿namespace Notes
+﻿using Notes.Models;
+
+namespace Notes
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        public List<Team> Teams { get; set; } = new List<Team> ()
+        {
+            new() { Name = "Кливленд Кавальерс", Games = 21, Image = "cleavlend.png" } ,
+            new() { Name = "Кливленд Кавальерс", Games = 21 }
+        };
 
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = this;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
+            
+            await Shell.Current.GoToAsync(nameof(AboutPage));
+           
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
 
